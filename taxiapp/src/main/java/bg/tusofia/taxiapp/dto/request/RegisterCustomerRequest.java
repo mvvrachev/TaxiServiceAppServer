@@ -8,7 +8,7 @@ public record RegisterCustomerRequest(
         @NotBlank String username,
         @NotBlank String firstName,
         @NotBlank String lastName,
-        @NotBlank @Size(min = 6) String password,
+        @NotBlank @Size(min = 6, message = "Password must be at least 6 characters long") String password,
         @NotBlank @Pattern(regexp = "^\\+359\\d{9}$", message = "Phone number must start with +359 followed by 9 digits") String phoneNumber
 ) {
 }
