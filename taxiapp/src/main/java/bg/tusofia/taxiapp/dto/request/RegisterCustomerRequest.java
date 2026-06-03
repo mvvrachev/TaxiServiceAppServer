@@ -1,0 +1,14 @@
+package bg.tusofia.taxiapp.dto.request;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+
+public record RegisterCustomerRequest(
+        @NotBlank String username,
+        @NotBlank String firstName,
+        @NotBlank String lastName,
+        @NotBlank @Size(min = 6) String password,
+        @NotBlank @Pattern(regexp = "^\\+359\\d{9}$", message = "Phone number must start with +359 followed by 9 digits") String phoneNumber
+) {
+}
