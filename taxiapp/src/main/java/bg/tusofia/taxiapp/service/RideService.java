@@ -68,7 +68,8 @@ public class RideService {
 
     public List<RideResponse> getOpenRides() {
         LocalDate today = LocalDate.now();
-        return rideRepository.findByStatus(RideStatus.PENDING).stream()
+        Sort sort = Sort.by(Sort.Direction.ASC, "rideDate", "rideTime");
+        return rideRepository.findByStatus(RideStatus.PENDING, sort).stream()
                 .filter(ride -> !ride.getRideDate().isBefore(today))
                 .map(this::toRideResponse)
                 .toList();

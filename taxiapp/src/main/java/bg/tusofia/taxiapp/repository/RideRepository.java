@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 
 public interface RideRepository extends JpaRepository<Ride, Long> {
-    List<Ride> findByStatus(RideStatus status);
     List<Ride> findByCustomerAndStatusIn(User customer, Collection<RideStatus> statuses, Sort sort);
     List<Ride> findByDriverAndStatusIn(Driver driver, Collection<RideStatus> statuses, Sort sort);
+    List<Ride> findByStatus(RideStatus status, Sort sort);
 }
